@@ -78,15 +78,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4.5 border-t border-[#2C313A] pt-6">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4.5 border-t border-[#2C313A] pt-6">
           <span className="text-[13px] text-[#6b7682]">© {new Date().getFullYear()} Oxibit Technologies. All rights reserved.</span>
-          <div className="flex gap-5.5">
+          {/* <div className="flex gap-5.5">
             {legalLinks.map((label) => (
               <Link key={label} href="#" className="text-[13px] text-silver transition-colors hover:text-white">
                 {label}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </Container>
     </footer>
