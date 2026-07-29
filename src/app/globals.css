@@ -2,25 +2,129 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #44505c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Oxibit brand palette (sourced from the design-system color tokens) */
+  --color-charcoal: #21252c;
+  --color-charcoal-700: #2c313a;
+  --color-blue: #0066ff;
+  --color-blue-600: #0052cc;
+  --color-blue-300: #5c9bff;
+  --color-blue-100: #c2d9ff;
+  --color-blue-050: #eaf2ff;
+  --color-orange: #ff5500;
+  --color-cyan: #47cfeb;
+  --color-slate: #44505c;
+  --color-silver: #8c97a3;
+  --color-mist: #e2e8ee;
+  --color-cloud: #f4f6f8;
+  --color-frost: #eaf2ff;
+  --color-success: #1e9e5a;
+  --color-success-fill: #eaf7ef;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-poppins), var(--font-inter), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-blue-100);
+  color: var(--color-charcoal);
+}
+
+/* ---------- Ambient decorative motion (always-on, non scroll-tracked) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ox-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+  @keyframes ox-floatb {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+  @keyframes ox-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.94;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+  @keyframes ox-drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-26px, -16px);
+    }
+  }
+  @keyframes ox-ring {
+    0% {
+      transform: translate(-50%, -50%) scale(0.7);
+      opacity: 0.65;
+    }
+    70% {
+      transform: translate(-50%, -50%) scale(2.8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-ox-float {
+    animation: ox-float 6s ease-in-out infinite;
+  }
+  .animate-ox-floatb {
+    animation: ox-floatb 6s ease-in-out infinite 0.4s;
+  }
+  .animate-ox-breathe {
+    animation: ox-breathe 5s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .animate-ox-drift {
+    animation: ox-drift 15s ease-in-out infinite;
+  }
+
+  .ox-livedot {
+    position: relative;
+  }
+  .ox-livedot::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-success);
+    animation: ox-ring 2.4s ease-out infinite;
+  }
 }
