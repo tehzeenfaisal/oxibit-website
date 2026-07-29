@@ -1,5 +1,12 @@
+import { readFileSync } from "fs";
+import { join } from "path";
+
 export const ogImageSize = { width: 1200, height: 630 };
 export const ogImageContentType = "image/png";
+
+const logoSrc = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/logos/oxibit-logo-white.png"),
+).toString("base64")}`;
 
 interface OgImageProps {
   eyebrow: string;
@@ -23,19 +30,8 @@ export function OgImage({ eyebrow, title }: OgImageProps) {
         fontFamily: "sans-serif",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <div style={{ display: "flex", width: 34, height: 34, borderRadius: 8, overflow: "hidden" }}>
-          <div style={{ display: "flex", flexDirection: "column", width: 17 }}>
-            <div style={{ display: "flex", width: 17, height: 17, background: "#0066FF" }} />
-            <div style={{ display: "flex", width: 17, height: 17, background: "#FF5500" }} />
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", width: 17 }}>
-            <div style={{ display: "flex", width: 17, height: 17, background: "#fff" }} />
-            <div style={{ display: "flex", width: 17, height: 17, background: "#47CFEB" }} />
-          </div>
-        </div>
-        <span style={{ fontSize: 26, fontWeight: 700, color: "#fff", letterSpacing: -0.5 }}>Oxibit Technologies</span>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element -- next/og's ImageResponse (Satori) only renders plain <img>, not next/image */}
+      <img src={logoSrc} alt="" width={157} height={40} style={{ display: "flex" }} />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 980 }}>
         <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#5C9BFF" }}>
