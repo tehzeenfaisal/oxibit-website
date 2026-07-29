@@ -24,10 +24,44 @@ const budgetOptions = ["Under $25k", "$25k – $75k", "$75k – $150k", "$150k+"
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      company: formData.get("company"),
+      phone: formData.get("phone"),
+      service: formData.get("service"),
+      budget: formData.get("budget"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Something went wrong. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -69,9 +103,10 @@ export function ContactForm() {
           placeholder="What are you trying to build or improve? What does success look like?"
           required
         />
+        {error && <p className="text-[13.5px] text-red-600">{error}</p>}
         <div className="mt-1 flex flex-wrap items-center gap-3.5">
-          <Button type="submit" variant="gradient" size="lg" className="w-45">
-            Start Your Project
+          <Button type="submit" variant="gradient" size="lg" className="w-45" disabled={submitting}>
+            {submitting ? "Sending…" : "Start Your Project"}
           </Button>
           <span className="inline-flex items-center gap-2 text-[13.5px] text-silver">
             <Lock className="size-3.75" /> We&apos;ll never share your details.
