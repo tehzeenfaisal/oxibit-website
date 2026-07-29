@@ -10,7 +10,7 @@ import { offices } from "@/data/offices";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
 });
 
 const inter = Inter({

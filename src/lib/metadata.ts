@@ -26,6 +26,7 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
       url,
       siteName: siteConfig.name,
       type: "website",
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
