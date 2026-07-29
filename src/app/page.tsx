@@ -22,7 +22,7 @@ import { testimonials } from "@/data/testimonials";
 import { homeFaq } from "@/data/faq";
 
 export const metadata = pageMetadata({
-  title: "Custom Software Built Around Your Business",
+  title: "Oxibit Technologies - We Make IT happen",
   description:
     "Oxibit Technologies plans, builds, tests, and maintains custom software, using AI where it earns its place, then stays on to support it long after launch.",
   path: "/",
