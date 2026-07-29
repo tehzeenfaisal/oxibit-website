@@ -66,7 +66,7 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <Card className="p-9 text-center">
+      <Card className="flex h-full flex-col items-center justify-center p-9 text-center">
         <span className="mb-4.5 inline-flex size-16 items-center justify-center rounded-full bg-success-fill">
           <Check className="size-8 text-success" />
         </span>
@@ -79,11 +79,11 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="p-9">
+    <Card className="flex h-full flex-col p-9">
       <h2 className="mb-1.5 font-heading text-[22px] font-semibold text-charcoal">Send us a message</h2>
       <p className="mb-6.5 text-[14.5px] text-silver">Fields marked with an asterisk are required.</p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
+      <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-4.5">
         <div className="grid grid-cols-2 gap-4.5 max-[920px]:grid-cols-1">
           <FormField label="Full name *" name="name" placeholder="Jordan Avery" required />
           <FormField label="Work email *" name="email" type="email" placeholder="you@company.com" required />
