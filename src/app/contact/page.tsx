@@ -54,29 +54,38 @@ export default function ContactPage() {
 
       {/* Contact grid */}
       <Container className="pt-12 pb-18 max-[920px]:py-16">
-        <Reveal className="grid grid-cols-[1.25fr_1fr] items-start gap-8 max-[920px]:grid-cols-1">
+        <Reveal className="grid grid-cols-[1.25fr_1fr] gap-8 max-[920px]:grid-cols-1">
           <ContactForm />
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col justify-between gap-5">
             <div className="rounded-2xl border border-[#E1E9F5] bg-[#EEF4FF] p-7.5">
               <h3 className="mb-5 font-heading text-lg font-semibold text-charcoal">Reach us directly</h3>
               <div className="flex flex-col gap-4.5">
-                <a href="mailto:hello@oxibit.com" className="flex items-center gap-3.25">
+                <a href="mailto:info@oxibit.com" className="flex items-center gap-3.25">
                   <span className="flex size-10.5 shrink-0 items-center justify-center rounded-[10px] border border-[#DCE6F4] bg-white">
                     <Mail className="size-5 text-blue" />
                   </span>
                   <span>
                     <span className="block text-xs text-silver">Email</span>
-                    <span className="block text-[15px] font-medium text-charcoal">hello@oxibit.com</span>
+                    <span className="block text-[15px] font-medium text-charcoal">info@oxibit.com</span>
                   </span>
                 </a>
-                <a href="tel:+18455550100" className="flex items-center gap-3.25">
+                <a href="tel:+18459154480" className="flex items-center gap-3.25">
                   <span className="flex size-10.5 shrink-0 items-center justify-center rounded-[10px] border border-[#DCE6F4] bg-white">
                     <Phone className="size-5 text-blue" />
                   </span>
                   <span>
-                    <span className="block text-xs text-silver">Phone</span>
-                    <span className="block text-[15px] font-medium text-charcoal">+1 (845) 555-0100</span>
+                    <span className="block text-xs text-silver">Phone · US</span>
+                    <span className="block text-[15px] font-medium text-charcoal">+1 (845) 915 4480</span>
+                  </span>
+                </a>
+                <a href="tel:+923334401011" className="flex items-center gap-3.25">
+                  <span className="flex size-10.5 shrink-0 items-center justify-center rounded-[10px] border border-[#DCE6F4] bg-white">
+                    <Phone className="size-5 text-blue" />
+                  </span>
+                  <span>
+                    <span className="block text-xs text-silver">Phone · Pakistan</span>
+                    <span className="block text-[15px] font-medium text-charcoal">+92 (333) 440 1011</span>
                   </span>
                 </a>
                 <div className="flex items-center gap-3.25">
